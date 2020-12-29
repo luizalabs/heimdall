@@ -17,7 +17,7 @@ For the remaining ones it is used a default validation:
 Install with pip:
 
 ```
-pip install whell && pip install heimdall_valid_bank
+pip install wheel && pip install heimdall_valid_bank
 ```
 
 To validate the entire bank account, follow these steps:

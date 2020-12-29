@@ -6,6 +6,15 @@ from heimdall_valid_bank.common_validate import CommonValidate
 from heimdall_valid_bank.generic_validators import GenericValidators
 
 class AgencyValidate(CommonValidate):
+    """ 
+        This class is responsible for validating the bank agency number
+        
+        Attributes: 
+            bank_code (string): Bank code, usually 3 digits ex.: 001. 
+            agency (string): Agency number with or without the digit ex.: 2345-9, 2345.
+            digit_agency (String): Digit of the agency, if passed with the agency it is not necessary to inform the digit here.
+    """
+    
     def __init__(self, **kwargs):
         self.bank_code = kwargs.get('bank_code')
         self.agency = kwargs.get('agency')
