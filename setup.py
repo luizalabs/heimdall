@@ -6,13 +6,13 @@ with open("README.md") as readme_file:
 setup_args = dict(
     name='heimdall_valid_bank',
     description='Python implementation for bank account validation.',
-    version='1.0.5',
+    version='1.0.0',
     url='https://github.com/luizalabs/heimdall',
     license='MIT License',
     author='Thais Ribeiro',
     long_description=README,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
