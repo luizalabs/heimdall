@@ -2,9 +2,8 @@ import re
 from heimdall_valid_bank.utils.constants import GenericVariables
 from heimdall_valid_bank.common_validate import CommonValidate
 from heimdall_valid_bank.generic_validators import GenericValidators
-from heimdall_valid_bank.base_validate_error import (InvalidAccountNumber, InvalidDigitAccountNumber)
+from heimdall_valid_bank.base_validate_error import InvalidAccountNumber, InvalidDigitAccountNumber
 from heimdall_valid_bank.calculate_number_account import CalculateAccount
-
 class AccountValidate(CommonValidate):
     def __init__(self, **kwargs):
         self.agency = kwargs.get('agency')

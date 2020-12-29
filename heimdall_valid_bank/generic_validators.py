@@ -2,6 +2,7 @@ import re
 from heimdall_valid_bank.base_validate_error import InvalidAgencyNumber, InvalidDigitAgencyNumber, InvalidAccountNumber, \
     InvalidDigitAccountNumber
 
+
 class GenericValidators:
     @staticmethod
     def agency_is_valid(agency):
