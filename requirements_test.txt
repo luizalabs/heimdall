@@ -1,0 +1,6 @@
+setuptools
+coverage==5.3
+pytest-cov==2.8.1
+pytest-runner==5.2
+flake8==3.8.1
+pytest
