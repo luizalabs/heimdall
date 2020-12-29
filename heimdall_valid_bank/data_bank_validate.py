@@ -1,7 +1,7 @@
 import re
-from heimdall_bank_validate.bank_validate import BankValidate
-from heimdall_bank_validate.agency_validate import AgencyValidate
-from heimdall_bank_validate.account_validate import AccountValidate
+from heimdall_valid_bank.bank_validate import BankValidate
+from heimdall_valid_bank.agency_validate import AgencyValidate
+from heimdall_valid_bank.account_validate import AccountValidate
 
 class DataBankValidate():
     def __init__(self, **kwargs):

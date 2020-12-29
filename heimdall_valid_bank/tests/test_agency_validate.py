@@ -1,8 +1,7 @@
 from unittest import TestCase
-from heimdall_bank_validate.account_validate import AccountValidate
-
-class TestAccountValidate(TestCase):
-    def test_start_account_validate(self):
+from heimdall_valid_bank.agency_validate import AgencyValidate
+class TestAgencyValidate(TestCase):
+    def test_start_agency_validate(self):
         banks_valids = {
             '001': {
                 'agency': '1584',
@@ -48,16 +47,14 @@ class TestAccountValidate(TestCase):
                 'digit_account': '7'
             }
         }
-        return_account_valid = []
+        return_agency_valid = []
         for bank in banks_valids:
-            account_valid = AccountValidate(
+            agency_valid = AgencyValidate(
                 bank_code=bank,
                 agency=banks_valids[bank]['agency'],
-                digit_agency=banks_valids[bank].get('digit_agency'),
-                account=banks_valids[bank]['account'],
-                digit_account=banks_valids[bank].get('digit_account')
+                digit_agency=banks_valids[bank].get('digit_agency')
             ).start()
 
-            return_account_valid.append(account_valid)
+            return_agency_valid.append(agency_valid)
 
-        assert [False, False, False, False, False, False, False, False] == return_account_valid
+        assert [True, True, True, True, True, True, True, True] == return_agency_valid

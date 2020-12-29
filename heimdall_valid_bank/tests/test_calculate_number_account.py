@@ -1,6 +1,6 @@
 from unittest import TestCase
-from heimdall_bank_validate.calculate_number_account import CalculateAccount
-from heimdall_bank_validate.tests.data import BANCO_DO_BRASIL, BRADESCO, BANRISUL, CAIXA_ECONOMICA_FEDERAL, SANTANDER, CITIBANK, ITAU, NUBANK
+from heimdall_valid_bank.calculate_number_account import CalculateAccount
+from heimdall_valid_bank.tests.data import BANCO_DO_BRASIL, BRADESCO, BANRISUL, CAIXA_ECONOMICA_FEDERAL, SANTANDER, CITIBANK, ITAU, NUBANK
 
 class TestCalculateAccount(TestCase):
 

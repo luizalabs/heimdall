@@ -4,10 +4,10 @@ with open("README.md") as readme_file:
     README = readme_file.read()
 
 setup_args = dict(
-    name='heimdall_bank_validate',
+    name='heimdall_valid_bank',
     description='Python implementation for bank account validation.',
     version='0.0.1',
-    url='https://github.com/thaisribeiro/heimdall',
+    url='https://github.com/luizalabs/heimdall',
     license='MIT License',
     author='Thais Ribeiro',
     long_description=README,

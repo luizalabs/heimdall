@@ -1,5 +1,5 @@
 import re
-from heimdall_bank_validate.base_validate_error import InvalidAgencyNumber, InvalidDigitAgencyNumber, InvalidAccountNumber, \
+from heimdall_valid_bank.base_validate_error import InvalidAgencyNumber, InvalidDigitAgencyNumber, InvalidAccountNumber, \
     InvalidDigitAccountNumber
 
 class GenericValidators:

@@ -1,7 +1,7 @@
 from unittest import TestCase
-from heimdall_bank_validate.data_bank_validate import DataBankValidate
+from heimdall_valid_bank.account_validate import AccountValidate
 
-class TestDataBankValidate(TestCase):
+class TestAccountValidate(TestCase):
     def test_start_account_validate(self):
         banks_valids = {
             '001': {
@@ -50,7 +50,7 @@ class TestDataBankValidate(TestCase):
         }
         return_account_valid = []
         for bank in banks_valids:
-            account_valid = DataBankValidate(
+            account_valid = AccountValidate(
                 bank_code=bank,
                 agency=banks_valids[bank]['agency'],
                 digit_agency=banks_valids[bank].get('digit_agency'),

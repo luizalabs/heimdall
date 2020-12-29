@@ -17,14 +17,14 @@ For the remaining ones it is used a default validation:
 Install with pip:
 
 ```
-pip install whell && pip install heimdall_bank_validate
+pip install whell && pip install heimdall_valid_bank
 ```
 
 To validate the entire bank account, follow these steps:
 
 
 ``` {.sourceCode .python}
-from heimdall_bank_validate.data_bank_validate import DataBankValidate
+from heimdall_valid_bank.data_bank_validate import DataBankValidate
 
 valid_bank = DataBankValidate(
                 bank_code='001',
@@ -46,7 +46,7 @@ You can also validate in stages, using `BankValidate`, `AgencyValidate`, `Accoun
 * basic agency validation:
   
 ``` {.sourceCode .python}
-from heimdall_bank_validate.agency_validate import AgencyValidate
+from heimdall_valid_bank.agency_validate import AgencyValidate
 
 valid_bank = AgencyValidate(
                 bank_code='237',
@@ -63,7 +63,7 @@ else:
 * validation with agency branch
   
 ``` {.sourceCode .python}
-from heimdall_bank_validate.agency_validate import AgencyValidate
+from heimdall_valid_bank.agency_validate import AgencyValidate
 
 valid_bank = AgencyValidate(
                 bank_code='001',
@@ -81,7 +81,7 @@ else:
 * agency validation by passing the branch directly at the agency, if you have:
   
 ``` {.sourceCode .python}
-from heimdall_bank_validate.agency_validate import AgencyValidate
+from heimdall_valid_bank.agency_validate import AgencyValidate
 
 valid_bank = AgencyValidate(
                 bank_code='001',

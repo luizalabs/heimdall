@@ -1,5 +1,5 @@
 from unittest import TestCase
-from heimdall_bank_validate.bank_validate import BankValidate
+from heimdall_valid_bank.bank_validate import BankValidate
 class TestBankValidate(TestCase):
     def test_start_bank_validate(self):
         banks_code = ['001', '237', '341', '033', '745', '399', '041', '260']
