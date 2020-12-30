@@ -23,7 +23,7 @@ class AgencyValidate(CommonValidate):
     def start(self):
         try:
             regex = re.match('^[0-9]{1,4}(-[0-9a-zA-Z]{1,2})?$', self.agency)
-            if not regex:
+            if regex is None:
                 raise InvalidAgencyNumber()
             
             if  len(self.agency) > 4:

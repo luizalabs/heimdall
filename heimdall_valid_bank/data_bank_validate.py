@@ -25,7 +25,7 @@ class DataBankValidate():
     def start(self):
         try:
             regex_agency = re.match('^[0-9]{1,4}(-[0-9a-zA-Z]{1,2})?$', self.agency)
-            if not regex_agency:
+            if regex_agency is None:
                 raise InvalidAgencyNumber()
             
             if  len(self.agency) > 4:
