@@ -60,4 +60,4 @@ class TestDataBankValidate(TestCase):
 
             return_account_valid.append(account_valid)
 
-        assert [False, False, False, False, False, False, False, False] == return_account_valid
+        assert [True, True, False, False, False, True, False, False] == return_account_valid

@@ -26,8 +26,10 @@ class AgencyValidate(CommonValidate):
             if regex is None:
                 raise InvalidAgencyNumber()
             
-            if  len(self.agency) > 4:
-                agency = re.sub('[^A-Za-z0-9]+', '', self.agency)
+            agency = re.sub('[^A-Za-z0-9]+', '', self.agency)
+            self.agency = agency
+           
+            if  len(self.agency) > 4 and self.bank_code in ['001', '237']:
                 self.agency = agency[0:4]
                 self.digit_agency = agency[4:len(agency)]
             
