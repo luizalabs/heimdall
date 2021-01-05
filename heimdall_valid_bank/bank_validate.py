@@ -1,7 +1,8 @@
 import re
 from heimdall_valid_bank.base_validate_error import InvalidCodeBank
 
-class BankValidate():
+
+class BankValidate:
     def __init__(self, **kwargs):
         self.bank_code = kwargs.get('bank_code')
 
@@ -31,7 +32,7 @@ class BankValidate():
         regex = re.compile('^([0-9A-Za-x]{3,5})$', re.I)
         match = bool(regex.match(self.bank_code))
 
-        if match == False:
+        if match is False:
             raise InvalidCodeBank()
 
         return True
