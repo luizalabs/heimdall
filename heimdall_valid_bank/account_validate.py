@@ -180,19 +180,20 @@ class AccountValidate(CommonValidate):
         
         return check_number_calculated_account == self.digit_account
 
-    def check_number_calculate_account(self, **kwargs):
+    @staticmethod
+    def check_number_calculate_account(**kwargs):
         account, digit_account, length_account, bank = kwargs.values()
         agency = kwargs.get('agency', None)
         
         if len(account) < length_account:
             account = f'%0{length_account}d' % int(account)
        
-        result_valid_account = super().account_is_valid(account)
+        result_valid_account = CommonValidate.account_is_valid(account)
         
         if not result_valid_account:
             raise InvalidAccountNumber()
         
-        result_valid_digit_account = super().account_digit_is_valid(digit_account)
+        result_valid_digit_account = CommonValidate.account_digit_is_valid(digit_account)
     
         if not result_valid_digit_account:
             raise InvalidDigitAccountNumber()
