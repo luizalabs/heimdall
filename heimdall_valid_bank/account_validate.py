@@ -49,7 +49,7 @@ class AccountValidate(CommonValidate):
         """
             Valida contas genéricas
         """
-        self.__format_account()
+        self.__format_account(9)
         result = GenericValidators.account_is_valid(self.account)
 
         if self.digit_account:
@@ -62,7 +62,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do Banco do Brasil
           Tamanho da Conta - 8 Dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(8)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=None,
             account=self.account,
@@ -78,7 +78,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Banrisul
           Tamanho da Conta - 9 Dígitos + 1 DV (sendo os dois primeiros o tipo de conta)
         """
-        self.__format_account()
+        self.__format_account(9)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=None,
             account=self.account,
@@ -94,7 +94,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Bradesco
           Tamanho da Conta - 7 Dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(7)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=None,
             account=self.account,
@@ -115,7 +115,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Banrisul
           Tamanho da Conta - 10 Dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(10)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=None,
             account=self.account,
@@ -131,7 +131,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Itaú
           Tamanho da Conta - 5 Dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(5)
         account_agency = self.agency + self.account
         check_number_calculated_account = self.check_number_calculate_account(
             agency=None,
@@ -148,7 +148,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Santander
           Tamanho da Conta - 8 dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(8)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=self.agency,
             account=self.account,
@@ -164,7 +164,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Caixa Econômica Federal
           Tamanho da Conta - 11 Dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(11)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=self.agency,
             account=self.account,
@@ -180,7 +180,7 @@ class AccountValidate(CommonValidate):
           Valida a conta e o dígito verificador do banco Nu Pagamentos (Nubank)
           Tamanho da Conta - 7 Dígitos + 1 DV
         """
-        self.__format_account()
+        self.__format_account(7)
         check_number_calculated_account = self.check_number_calculate_account(
             agency=self.agency,
             account=self.account,
@@ -191,15 +191,15 @@ class AccountValidate(CommonValidate):
 
         return check_number_calculated_account == self.digit_account
     
-    def __format_account(self):
+    def __format_account(self, length_account):
         """
             Format the account
         """
-        regex = re.search('[@_!#$%^&*()<>?/\-.|}{~:]', self.account)
-        if regex:
-            self.digit_account = self.account[regex.start() + 1:len(self.account)]
-            self.account = self.account[0:regex.start()]
-    
+        if len(self.account) > length_account:
+            account = re.sub('[^A-Za-z0-9]+', '', self.account)
+            self.account = account[0:length_account]
+            self.digit_account = account[length_account:len(account)]
+        
     @staticmethod
     def check_number_calculate_account(**kwargs):
         """
