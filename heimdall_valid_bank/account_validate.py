@@ -209,7 +209,7 @@ class AccountValidate(CommonValidate):
             'santander': CalculateAccount(account=account, agency=agency).calculate_account_santander,
             'citibank': CalculateAccount(account=account).calculate_account_citibank,
             'banrisul': CalculateAccount(account=account).calculate_account_banrisul,
-            'caixa': CalculateAccount(account=account).calculate_account_caixa,
+            'caixa': CalculateAccount(account=account, agency=agency).calculate_account_caixa,
             'nubank': CalculateAccount(account=account).calculate_account_nubank,
         }
 

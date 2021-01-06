@@ -74,3 +74,15 @@ class TestAccountValidate(TestCase):
         ).start()
 
         assert account_is_valid is True
+
+    def test_start_account_validate_caixa(self):
+        bank_code = '104'
+        bank_agency = '2004'
+        account = '00100000448-6'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True
