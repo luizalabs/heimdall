@@ -222,7 +222,7 @@ class AccountValidate(CommonValidate):
 
         switcher = {
             'bb': CalculateAccount(account=account).calculate_account_bb,
-            'bradeso': CalculateAccount(account=account).calculate_account_bradesco,
+            'bradesco': CalculateAccount(account=account).calculate_account_bradesco,
             'itau': CalculateAccount(account=account).calculate_account_itau,
             'santander': CalculateAccount(account=account, agency=agency).calculate_account_santander,
             'citibank': CalculateAccount(account=account).calculate_account_citibank,

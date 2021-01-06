@@ -72,3 +72,23 @@ class TestAgencyValidate(TestCase):
         ).start()
 
         assert account_is_valid is False
+
+    def test_start_agency_validate_bradesco_with_blank_digit_separator(self):
+        bank_code = '237'
+        bank_agency = '3890-3'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency
+        ).start()
+
+        assert account_is_valid is True
+
+    def test_start_agency_validate_bradesco_without_blank_digit_separator(self):
+        bank_code = '237'
+        bank_agency = '38903'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency
+        ).start()
+
+        assert account_is_valid is True

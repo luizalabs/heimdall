@@ -87,7 +87,7 @@ class TestAccountValidate(TestCase):
 
         assert account_is_valid is True
 
-    def test_start_account_validate_bradesco(self):
+    def test_start_account_validate_false_bradesco(self):
         bank_code = '237'
         bank_agency = '3890-3'
         account = '9658-5'
@@ -98,6 +98,18 @@ class TestAccountValidate(TestCase):
         ).start()
 
         assert account_is_valid is False
+
+    def test_start_account_validate_true_bradesco(self):
+        bank_code = '237'
+        bank_agency = '3890-3'
+        account = '0004307-9'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True
 
     def test_start_account_validate_nubank(self):
         bank_code = '260'
