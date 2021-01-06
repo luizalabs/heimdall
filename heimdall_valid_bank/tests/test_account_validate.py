@@ -86,3 +86,51 @@ class TestAccountValidate(TestCase):
         ).start()
 
         assert account_is_valid is True
+
+    def test_start_account_validate_bradesco(self):
+        bank_code = '237'
+        bank_agency = '3890-3'
+        account = '9658-5'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is False
+
+    def test_start_account_validate_nubank(self):
+        bank_code = '260'
+        bank_agency = '0001'
+        account = '7956865-6'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True
+
+    def test_start_account_validate_itau_with_blank_digit_separator(self):
+        bank_code = '341'
+        bank_agency = '2545'
+        account = '02366-1'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True
+
+    def test_start_account_validate_itau_without_blank_digit_separator(self):
+        bank_code = '341'
+        bank_agency = '2545'
+        account = '023661'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True

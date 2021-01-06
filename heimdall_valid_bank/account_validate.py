@@ -64,11 +64,11 @@ class AccountValidate(CommonValidate):
         """
         self.__format_account()
         check_number_calculated_account = self.check_number_calculate_account(
+            agency=None,
             account=self.account,
             digit_account=self.digit_account,
             length_account=8,
-            bank='bb',
-            agency=None
+            bank='bb'
         )
 
         return check_number_calculated_account == self.digit_account.upper()
@@ -80,11 +80,11 @@ class AccountValidate(CommonValidate):
         """
         self.__format_account()
         check_number_calculated_account = self.check_number_calculate_account(
+            agency=None,
             account=self.account,
             digit_account=self.digit_account,
             length_account=9,
-            bank='banrisul',
-            agency=None
+            bank='banrisul'
         )
 
         return check_number_calculated_account == self.digit_account
@@ -96,11 +96,11 @@ class AccountValidate(CommonValidate):
         """
         self.__format_account()
         check_number_calculated_account = self.check_number_calculate_account(
+            agency=None,
             account=self.account,
             digit_account=self.digit_account,
             length_account=7,
-            bank='bradesco',
-            agency=None
+            bank='bradesco'
         )
 
         check_number_informed_account = self.digit_account.upper()
@@ -117,11 +117,11 @@ class AccountValidate(CommonValidate):
         """
         self.__format_account()
         check_number_calculated_account = self.check_number_calculate_account(
+            agency=None,
             account=self.account,
             digit_account=self.digit_account,
             length_account=10,
-            bank='citibank',
-            agency=None
+            bank='citibank'
         )
 
         return check_number_calculated_account == self.digit_account
@@ -132,13 +132,13 @@ class AccountValidate(CommonValidate):
           Tamanho da Conta - 5 Dígitos + 1 DV
         """
         self.__format_account()
-        account_agency = self.account + self.agency
+        account_agency = self.agency + self.account
         check_number_calculated_account = self.check_number_calculate_account(
+            agency=None,
             account=account_agency,
             digit_account=self.digit_account,
             length_account=5,
-            bank='itau',
-            agency=None
+            bank='itau'
         )
 
         return check_number_calculated_account == self.digit_account

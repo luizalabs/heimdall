@@ -1,5 +1,7 @@
 from unittest import TestCase
 from heimdall_valid_bank.agency_validate import AgencyValidate
+
+
 class TestAgencyValidate(TestCase):
     def test_start_agency_validate(self):
         banks_valids = {
@@ -58,3 +60,15 @@ class TestAgencyValidate(TestCase):
             return_agency_valid.append(agency_valid)
 
         assert [True, True, True, True, True, True, True, True] == return_agency_valid
+
+    def test_start_agency_validate_caixa_with_length_less_than_minimum(self):
+        bank_code = '104'
+        bank_agency = '2004'
+        account = '123456'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is False
