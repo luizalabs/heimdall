@@ -23,17 +23,6 @@ class AgencyValidate(CommonValidate):
 
     def start(self):
         try:
-            regex = re.match('^[0-9]{1,4}(-[0-9a-zA-Z]{1,2})?$', self.agency)
-            if regex is None:
-                raise InvalidAgencyNumber()
-
-            agency = re.sub('[^A-Za-z0-9]+', '', self.agency)
-            self.agency = agency
-
-            if len(self.agency) > 4 and self.bank_code in ['001', '237']:
-                self.agency = agency[0:4]
-                self.digit_agency = agency[4:len(agency)]
-
             if self.bank_code not in GenericVariables.LIST_BANKS:
                 return self.valid_agency_generic()
 
@@ -56,6 +45,7 @@ class AgencyValidate(CommonValidate):
         """
           Valida agências genéricas
         """
+        self.__format_agency()
         result = GenericValidators.agency_is_valid(self.agency)
 
         if self.digit_agency:
@@ -68,6 +58,7 @@ class AgencyValidate(CommonValidate):
            Valida a agência e o dígito verificador do banco do Brasil
            Tamanho da Agência - 4 Dígitos + 1 DV
         """
+        self.__format_agency(True)
         agency_is_valid = super().agency_is_valid(self.agency)
 
         if not agency_is_valid:
@@ -90,6 +81,7 @@ class AgencyValidate(CommonValidate):
           Valida a agência e dígito verificador do banco Banrisul
           Tamanho da Agência - 4 Dígitos
         """
+        self.__format_agency()
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
@@ -102,6 +94,8 @@ class AgencyValidate(CommonValidate):
             Valida a agência e o dígito verificador do banco Bradesco
             Tamanho da Agência - 4 Dígitos + 2 DV
         """
+        self.__format_agency(True)
+        
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
@@ -127,6 +121,7 @@ class AgencyValidate(CommonValidate):
           Valida a agência do banco Citibank
           Tamanho da Agência - 4 Dígitos - Não tem dígito verificador
         """
+        self.__format_agency()
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
@@ -139,6 +134,7 @@ class AgencyValidate(CommonValidate):
           Valida a agência do banco Itaú
           Tamanho da Agência - 4 Dígitos - Não tem dígito verificador
         """
+        self.__format_agency()
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
@@ -151,6 +147,7 @@ class AgencyValidate(CommonValidate):
            Valida a agência do banco Santander
            Tamanho da Agência - 4 Dígitos - Não tem dígito verificador
         """
+        self.__format_agency()
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
@@ -163,6 +160,7 @@ class AgencyValidate(CommonValidate):
            Valida a agência do banco Caixa Econômica Federal
            Tamanho da Agência - 4 Dígitos - Não tem dígito verificador
         """
+        self.__format_agency()
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
@@ -175,9 +173,30 @@ class AgencyValidate(CommonValidate):
            Valida a agência do banco Nu Pagamentos (Nubank)
            Tamanho da Agência - 4 Dígitos - Não tem dígito verificador
         """
+        self.__format_agency()
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:
             raise InvalidAgencyNumber()
 
         return True
+
+    def __format_agency(self, is_digit_agency=False):
+        """
+            Format the agency
+        """        
+        agency = re.sub('[^A-Za-z0-9]+', '', self.agency)
+        self.agency = agency
+        
+        if is_digit_agency and len(self.agency) > 4:
+            self.agency = agency[0:4]
+            self.digit_agency = agency[4:len(agency)]
+            return {}
+        
+        regex = re.match('^[0-9]{1,4}(-[0-9a-zA-Z]{1,2})?$', self.agency)
+        if regex is None:
+            raise InvalidAgencyNumber()
+
+        
+        
+        

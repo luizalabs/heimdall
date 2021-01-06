@@ -24,20 +24,6 @@ class DataBankValidate():
        
     def start(self):
         try:
-            regex_agency = re.match('^[0-9]{1,4}(-[0-9a-zA-Z]{1,2})?$', self.agency)
-            if regex_agency is None:
-                raise InvalidAgencyNumber()
-            
-            if  len(self.agency) > 4:
-                agency = re.sub('[^A-Za-z0-9]+', '', self.agency)
-                self.agency = agency[0:4]
-                self.digit_agency = agency[4:len(agency)]
-            
-            regex_account = re.search('[@_!#$%^&*()<>?/\-.|}{~:]', self.account)
-            if regex_account:
-                self.digit_account = self.account[regex_account.start() + 1:len(self.account)]
-                self.account = self.account[0:regex_account.start()]
-            
             if self.__valid_bank():
                 if self.__valid_agency():
                     return self.__valid_account()
