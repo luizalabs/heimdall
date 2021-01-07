@@ -1,6 +1,7 @@
 from unittest import TestCase
 from heimdall_valid_bank.data_bank_validate import DataBankValidate
 
+
 class TestDataBankValidate(TestCase):
     def test_start_account_validate(self):
         banks_valids = {

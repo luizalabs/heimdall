@@ -6,7 +6,7 @@ from heimdall_valid_bank.base_validate_error import InvalidAgencyNumber, Invalid
 class GenericValidators:
     @staticmethod
     def agency_is_valid(agency):
-        regex = re.compile('^[0-9]{1,5}$', re.I)
+        regex = re.compile('^(?!0+$)[0-9]{1,5}$', re.I)
         match = bool(regex.match(agency))
 
         if not match:
@@ -26,7 +26,7 @@ class GenericValidators:
 
     @staticmethod
     def account_is_valid(account):
-        regex = re.compile('^[0-9]{1,12}$', re.I)
+        regex = re.compile('^(?!0+$)[0-9]{1,12}$', re.I)
         match = bool(regex.match(account))
 
         if not match:

@@ -92,3 +92,43 @@ class TestAgencyValidate(TestCase):
         ).start()
 
         assert account_is_valid is True
+
+    def test_start_agency_validate_banrisul(self):
+        bank_code = '041'
+        bank_agency = '2664-18'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency
+        ).start()
+
+        assert account_is_valid is True
+
+    def test_start_agency_validate_generic_with_only_zeros_and_valid_digit(self):
+        bank_code = '399'
+        bank_agency = '0000-11'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency
+        ).start()
+
+        assert account_is_valid is False
+
+    def test_start_agency_validate_generic_with_only_zeros(self):
+        bank_code = '399'
+        bank_agency = '0000'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency
+        ).start()
+
+        assert account_is_valid is False
+
+    def test_start_agency_validate_generic_with_not_only_zeros(self):
+        bank_code = '399'
+        bank_agency = '0001'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency
+        ).start()
+
+        assert account_is_valid is True

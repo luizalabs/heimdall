@@ -111,6 +111,18 @@ class TestAccountValidate(TestCase):
 
         assert account_is_valid is True
 
+    def test_start_account_validate_true_bradesco_without_digit_separator(self):
+        bank_code = '237'
+        bank_agency = '3890-3'
+        account = '00043079'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True
+
     def test_start_account_validate_nubank(self):
         bank_code = '260'
         bank_agency = '0001'
@@ -139,6 +151,42 @@ class TestAccountValidate(TestCase):
         bank_code = '341'
         bank_agency = '2545'
         account = '023661'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is True
+
+    def test_start_account_validate_generic_with_only_zeros(self):
+        bank_code = '399'
+        bank_agency = '1234'
+        account = '000000'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is False
+
+    def test_start_account_validate_generic_with_only_zeros_and_valid_digit(self):
+        bank_code = '399'
+        bank_agency = '1234'
+        account = '000000-12'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account
+        ).start()
+
+        assert account_is_valid is False
+
+    def test_start_account_validate_generic_with_not_only_zeros(self):
+        bank_code = '399'
+        bank_agency = '1234'
+        account = '00001'
         account_is_valid = AccountValidate(
             bank_code=bank_code,
             agency=bank_agency,
