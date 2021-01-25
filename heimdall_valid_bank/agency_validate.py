@@ -81,7 +81,7 @@ class AgencyValidate(CommonValidate):
           Valida a agência e dígito verificador do banco Banrisul
           Tamanho da Agência - 4 Dígitos
         """
-        self.__format_agency()
+        self.__format_agency(True)
         result_agency_valid = super().agency_is_valid(self.agency)
 
         if not result_agency_valid:

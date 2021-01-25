@@ -20,17 +20,17 @@ class TestDataBankValidate(TestCase):
             '237': {
                 'agency': '2377',
                 'digit_agency': '9',
-                'account': '0238069',
+                'account': '02380691',
                 'digit_account': '2'
             },
             '341': {
                 'agency': '2545',
-                'account': '02366',
+                'account': '023661111',
                 'digit_account': '1'
             },
             '033': {
                 'agency': '2006',
-                'account': '01008407',
+                'account': '0100840711',
                 'digit_account': '4'
             },
             '745': {
@@ -40,12 +40,12 @@ class TestDataBankValidate(TestCase):
             },
             '104': {
                 'agency': '3009',
-                'account': '00100000448',
+                'account': '001000004484357',
                 'digit_account': '6'
             },
             '260': {
                 'agency': '0001',
-                'account': '9234876',
+                'account': '9234876483020',
                 'digit_account': '7'
             }
         }
