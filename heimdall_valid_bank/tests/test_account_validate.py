@@ -123,6 +123,18 @@ class TestAccountValidate(TestCase):
 
         assert account_is_valid is True
 
+    def test_start_account_validate_banrisul(self):
+        bank_code = '041'
+        bank_agency = '2664-18'
+        account = '358507671-8'
+        account_is_valid = AccountValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+            account=account,
+        ).start()
+
+        assert account_is_valid is True
+
     def test_start_account_validate_nubank(self):
         bank_code = '260'
         bank_agency = '0001'

@@ -63,7 +63,7 @@ class TestAgencyValidate(TestCase):
 
     def test_start_agency_validate_caixa_with_length_less_than_minimum(self):
         bank_code = '104'
-        bank_agency = '2004'
+        bank_agency = '200'
         account = '123456'
         account_is_valid = AgencyValidate(
             bank_code=bank_code,
@@ -102,6 +102,16 @@ class TestAgencyValidate(TestCase):
         ).start()
 
         assert account_is_valid is True
+
+    def test_start_agency_validate_banrisul_with_length_less_than_minimum(self):
+        bank_code = '041'
+        bank_agency = '266'
+        account_is_valid = AgencyValidate(
+            bank_code=bank_code,
+            agency=bank_agency,
+        ).start()
+
+        assert account_is_valid is False
 
     def test_start_agency_validate_generic_with_only_zeros_and_valid_digit(self):
         bank_code = '399'
